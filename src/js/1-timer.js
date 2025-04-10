@@ -9,8 +9,20 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 flatpickr('#datetime-picker', {
-    dateFormat: 'Y-m-d',
+    enableTime: true,
+    dateFormat: 'Y-m-d H:i',
+    minDate: 'today', // блокирует даты до текущего дня
 });
+
+const options = {
+    enableTime: true,
+    time_24hr: true,
+    defaultDate: new Date(),
+    minuteIncrement: 1,
+    onClose(selectedDates) {
+        console.log(selectedDates[0]);
+    },
+};
 
 function convertMs(ms) {
     // Number of milliseconds per unit of time
